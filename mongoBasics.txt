@@ -1,0 +1,33 @@
+//=============MONGODB BASICS===================
+//Implicit Inquiry
+//sample_restaurants.restaurants
+//==========1. Implicit
+{ borough : "Manhattan"}
+
+//EXPLICIT Inquiry===================================
+//==========2.AND
+ { $and: [{ borough: "Manhattan" }, { cuisine: "Asian"}]}
+
+//==========3. OR
+ { $or: [{ borough: "Queens" }, { cuisine: "Asian"}]} 
+
+
+//==========4. NOT
+{ borough: { $not: /^B.*/ } }
+
+//==========5. NOR
+{ $nor: [{ borough: "Brooklyn" }, { cuisine: "Hamburgers" }] }
+
+//sample_mflix.movies
+//==========6.EQUAL
+{genres : {$eq: "Western"} , languages : "English"}
+//==========7.NOT EQUAL
+{genres : {$ne: "Western"} , languages : {$ne: "English"}}
+//==========8. GREATER THAN
+{ genres: "Comedy" , year : { $gt: 1990 } }
+
+//sample_airbnb.listingsAndReviews
+//==========9. LESS THAN
+{ bedrooms : {$lt : 3}}
+//==========10. IN
+{ property_type: { $in: ["Apartment" , "House"] } }
